@@ -1,0 +1,33 @@
+0, 1, switch to kernel mode
+1, 10, context saved
+11, 1, find vector 2 in memory position 0x0004
+12, 1, load address 0x0292 into the PC
+13, 10, cloning the PCB
+23, 0, scheduler called
+23, 1, IRET
+24, 10, context restored
+34, 1, switch to user mode
+35, 1, switch to kernel mode
+36, 10, context saved
+46, 1, find vector 3 in memory position 0x0006
+47, 1, load address 0x0008 into the PC
+48, 150, loading program1 from disk to partition 0
+198, 1, marking partition as occupied
+199, 3, updating PCB
+202, 0, scheduler called
+202, 1, IRET
+203, 10, context restored
+213, 1, switch to user mode
+
+Final System State
+Partition Table:
+Partition 0: 40 MB - Code: program1
+Partition 1: 25 MB - Code: free
+Partition 2: 15 MB - Code: free
+Partition 3: 10 MB - Code: free
+Partition 4: 8 MB - Code: free
+Partition 5: 2 MB - Code: init
+
+PCB Table:
+PID 0: init (Partition 5, 1 MB, State: waiting)
+PID 1 (Parent: 0): program1 (Partition 0, 10 MB, State: running)

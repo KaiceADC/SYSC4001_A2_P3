@@ -1,0 +1,16 @@
+
+time: 35; current trace: FORK, 10 //clones init, and runs the child
++-----+--------------+------------------+------+---------+
+| PID | program name | partition number | size | state   |
++-----+--------------+------------------+------+---------+
+| 0 | init | 5 | 1 | waiting |
+| 1 | init | 6 | 1 | running |
++-----+--------------+------------------+------+---------+
+
+time: 214; current trace: EXEC program1, 50
++-----+--------------+------------------+------+---------+
+| PID | program name | partition number | size | state   |
++-----+--------------+------------------+------+---------+
+| 0 | init | 5 | 1 | waiting |
+| 1 | program1 | 0 | 10 | running |
++-----+--------------+------------------+------+---------+
