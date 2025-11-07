@@ -7,6 +7,28 @@
 
 #include<interrupts.hpp>
 
+void initialize_system() {
+    // Initialize 6 fixed partitions
+    partition_table = {
+        {1, 40, "free"},
+        {2, 25, "free"},
+        {3, 15, "free"},
+        {4, 10, "free"},
+        {5, 8, "free"},
+        {6, 2, "init"}  // init runs here
+    };
+    
+    // Create init process
+    PCB init_process;
+    init_process.pid = 0;
+    init_process.program_name = "init";
+    init_process.partition_number = 6;
+    init_process.size = 2;
+    init_process.state = "running";
+    pcb_table.push_back(init_process);
+}
+
+
 int main(int argc, char** argv) {
 
     // Partition table (6 partitions)
