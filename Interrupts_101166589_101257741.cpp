@@ -341,52 +341,8 @@ std::tuple<std::string, int> parse_trace(std::string trace) {
     return {activity, value};
 }
 
-std::tuple<std::vector<std::string>, std::vector<int>> parse_args(int argc, char** argv) {
-    if(argc != 5) {
-        std::cout << "ERROR! Expected 4 arguments\n";
-        exit(1);
-    }
-    
-    std::ifstream input_file(argv[1]);
-    if (!input_file.is_open()) {
-        std::cerr << "Error: Unable to open " << argv[1] << std::endl;
-        exit(1);
-    }
-    input_file.close();
-    
-    std::ifstream input_vector_table(argv[2]);
-    if (!input_vector_table.is_open()) {
-        std::cerr << "Error: Unable to open " << argv[2] << std::endl;
-        exit(1);
-    }
-    
-    std::string vector;
-    std::vector<std::string> vectors;
-    while(std::getline(input_vector_table, vector)) {
-        vector.erase(vector.find_last_not_of(" \n\r\t") + 1);
-        vector = vector.substr(vector.find_first_not_of(" \n\r\t"));
-        vectors.push_back(vector);
-    }
-    input_vector_table.close();
-    
-    std::string duration;
-    std::vector<int> delays;
-    std::ifstream device_table(argv[3]);
-    if (!device_table.is_open()) {
-        std::cerr << "Error: Unable to open " << argv[3] << std::endl;
-        exit(1);
-    }
-    
-    while(std::getline(device_table, duration)) {
-        delays.push_back(std::stoi(duration));
-    }
-    device_table.close();
-    
-    return {vectors, delays};
-}
-
 void write_output(std::string execution) {
-    std::ofstream output_file("execution.txt");
+    std::ofstream output_file("output_files/execution.txt");
     if (output_file.is_open()) {
         output_file << execution;
         output_file.close();
@@ -395,7 +351,7 @@ void write_output(std::string execution) {
 }
 
 void write_system_status_file(std::string status) {
-    std::ofstream status_file("system_status.txt");
+    std::ofstream status_file("output_files/system_status.txt");
     if (status_file.is_open()) {
         status_file << status;
         status_file.close();
@@ -403,8 +359,54 @@ void write_system_status_file(std::string status) {
 }
 
 int main(int argc, char** argv) {
-    auto [vectors, delays] = parse_args(argc, argv);
-    std::ifstream input_file(argv[1]);
+    if(argc != 5) {
+        std::cout << "ERROR! Expected 4 arguments\n";
+        exit(1);
+    }
+    
+    // Trace file is in input_files/ folder, everything else at root
+    std::string trace_path = "input_files/" + std::string(argv[1]);
+    std::string vector_path = std::string(argv[2]);  // Root
+    std::string device_path = std::string(argv[3]);  // Root
+    std::string external_path = std::string(argv[4]); // Root
+    
+    // Load vector table
+    std::ifstream input_vector_table(vector_path);
+    if (!input_vector_table.is_open()) {
+        std::cerr << "Error: Unable to open " << vector_path << std::endl;
+        exit(1);
+    }
+    
+    std::vector<std::string> vectors;
+    std::string vector;
+    while(std::getline(input_vector_table, vector)) {
+        vector.erase(vector.find_last_not_of(" \n\r\t") + 1);
+        vector = vector.substr(vector.find_first_not_of(" \n\r\t"));
+        vectors.push_back(vector);
+    }
+    input_vector_table.close();
+    
+    // Load device table (delays)
+    std::vector<int> delays;
+    std::ifstream device_table(device_path);
+    if (!device_table.is_open()) {
+        std::cerr << "Error: Unable to open " << device_path << std::endl;
+        exit(1);
+    }
+    
+    std::string duration;
+    while(std::getline(device_table, duration)) {
+        delays.push_back(std::stoi(duration));
+    }
+    device_table.close();
+    
+    // Open trace file
+    std::ifstream input_file(trace_path);
+    if (!input_file.is_open()) {
+        std::cerr << "Error: Unable to open " << trace_path << std::endl;
+        exit(1);
+    }
+    
     std::string trace;
     std::string execution;
     std::string status;
@@ -414,7 +416,7 @@ int main(int argc, char** argv) {
     bool in_parent_block = false;
     
     initialize_system();
-    external_files = load_external_files(argv[4]);
+    external_files = load_external_files(external_path);
     
     for (size_t i = 0; i < std::numeric_limits<size_t>::max(); i++) {
         if (!std::getline(input_file, trace)) break;
@@ -521,7 +523,7 @@ int main(int argc, char** argv) {
             }
             status += "+-----+--------------+------------------+------+---------+\n";
             
-            // === LOAD AND EXECUTE PROGRAM FILE (e.g., program2.txt, program1.txt) ===
+            // === LOAD AND EXECUTE PROGRAM FILE (at root) ===
             std::string program_file = program_name + ".txt";
             std::ifstream prog_file(program_file);
             
