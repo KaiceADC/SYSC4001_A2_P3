@@ -9,7 +9,7 @@
 
 void initialize_system() {
     // Initialize 6 fixed partitions
-    partition_table = {
+        partition_table = {
         {1, 40, "free"},
         {2, 25, "free"},
         {3, 15, "free"},
@@ -26,6 +26,37 @@ void initialize_system() {
     init_process.size = 2;
     init_process.state = "running";
     pcb_table.push_back(init_process);
+}
+
+std::string handle_fork(int& current_time, std::vector<std::string>& vectors) {
+    std::string result = "";
+    const int CONTEXT_TIME = 10;
+    
+    // Boilerplate (kernel mode, save context, find ISR)
+    auto [boilerplate, new_time] = intr_boilerplate(current_time, 2, CONTEXT_TIME, vectors);
+    result += boilerplate;
+    current_time = new_time;
+    
+    // Clone parent PCB to create child
+    PCB parent = pcb_table[0];  // Assume first process is parent
+    PCB child = parent;
+    child.pid = pcb_table.size();  // New PID
+    child.state = "running";
+    pcb_table.push_back(child);
+    
+    result += std::to_string(current_time) + ", 1, cloning PCB for child process\n";
+    current_time += 1;
+    
+    // Scheduler call (empty for now)
+    result += std::to_string(current_time) + ", 1, scheduler called\n";
+    current_time += 1;
+    
+    // IRET, restore context, return to user mode
+    result += execute_iret(current_time);
+    result += restore_context(current_time);
+    result += switch_to_user_mode(current_time);
+    
+    return result;
 }
 
 
@@ -60,6 +91,8 @@ int main(int argc, char** argv) {
     while(std::getline(input_file, trace)) {
         auto [activity, duration_intr] = parse_trace(trace);
 
+        
+
         /******************ADD YOUR SIMULATION CODE HERE*************************/
         
         if(activity == "CPU") {
@@ -73,6 +106,25 @@ int main(int argc, char** argv) {
     }
 
     input_file.close();
+
+    // After parse_args:
+    initialize_system();
+
+    // Load external files from file
+    // (Add code to read external_files.txt)
+
+    // In the trace parsing loop, add:
+    if (activity == "FORK") {
+    execution += handle_fork(current_time, vectors);
+    } else if (activity.substr(0, 4) == "EXEC") {
+    // Parse program name from trace
+    std::string program_name = activity.substr(5);  // Skip "EXEC "
+    execution += handle_exec(program_name, current_time, vectors, external_files);
+    }
+
+
+
+
 
     write_output(execution);
 
