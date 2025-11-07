@@ -1,595 +1,0 @@
-0, 49, CPU execution
-49, 1, switch to kernel mode
-50, 10, context saved
-60, 1, find vector 6 in memory position 0x000C
-61, 1, load address 0X0639 into the PC
-62, 265, SYSCALL: run the ISR
-327, 1, IRET
-328, 10, context restored
-338, 1, switch to user mode
-339, 99, CPU execution
-438, 1, switch to kernel mode
-439, 10, context saved
-449, 1, find vector 6 in memory position 0x000C
-450, 1, load address 0X0639 into the PC
-451, 265, END_IO: run the ISR
-716, 1, IRET
-717, 10, context restored
-727, 1, switch to user mode
-728, 72, CPU execution
-800, 1, switch to kernel mode
-801, 10, context saved
-811, 1, find vector 13 in memory position 0x001A
-812, 1, load address 0X06C7 into the PC
-813, 636, SYSCALL: run the ISR
-1449, 1, IRET
-1450, 10, context restored
-1460, 1, switch to user mode
-1461, 29, CPU execution
-1490, 1, switch to kernel mode
-1491, 10, context saved
-1501, 1, find vector 13 in memory position 0x001A
-1502, 1, load address 0X06C7 into the PC
-1503, 636, END_IO: run the ISR
-2139, 1, IRET
-2140, 10, context restored
-2150, 1, switch to user mode
-2151, 19, CPU execution
-2170, 1, switch to kernel mode
-2171, 10, context saved
-2181, 1, find vector 8 in memory position 0x0010
-2182, 1, load address 0X06EF into the PC
-2183, 1000, SYSCALL: run the ISR
-3183, 1, IRET
-3184, 10, context restored
-3194, 1, switch to user mode
-3195, 66, CPU execution
-3261, 1, switch to kernel mode
-3262, 10, context saved
-3272, 1, find vector 8 in memory position 0x0010
-3273, 1, load address 0X06EF into the PC
-3274, 1000, END_IO: run the ISR
-4274, 1, IRET
-4275, 10, context restored
-4285, 1, switch to user mode
-4286, 11, CPU execution
-4297, 1, switch to kernel mode
-4298, 10, context saved
-4308, 1, find vector 4 in memory position 0x0008
-4309, 1, load address 0X0292 into the PC
-4310, 250, SYSCALL: run the ISR
-4560, 1, IRET
-4561, 10, context restored
-4571, 1, switch to user mode
-4572, 21, CPU execution
-4593, 1, switch to kernel mode
-4594, 10, context saved
-4604, 1, find vector 4 in memory position 0x0008
-4605, 1, load address 0X0292 into the PC
-4606, 250, END_IO: run the ISR
-4856, 1, IRET
-4857, 10, context restored
-4867, 1, switch to user mode
-4868, 100, CPU execution
-4968, 1, switch to kernel mode
-4969, 10, context saved
-4979, 1, find vector 18 in memory position 0x0024
-4980, 1, load address 0X060A into the PC
-4981, 123, SYSCALL: run the ISR
-5104, 1, IRET
-5105, 10, context restored
-5115, 1, switch to user mode
-5116, 41, CPU execution
-5157, 1, switch to kernel mode
-5158, 10, context saved
-5168, 1, find vector 18 in memory position 0x0024
-5169, 1, load address 0X060A into the PC
-5170, 123, END_IO: run the ISR
-5293, 1, IRET
-5294, 10, context restored
-5304, 1, switch to user mode
-5305, 10, CPU execution
-5315, 1, switch to kernel mode
-5316, 10, context saved
-5326, 1, find vector 12 in memory position 0x0018
-5327, 1, load address 0X03B9 into the PC
-5328, 145, SYSCALL: run the ISR
-5473, 1, IRET
-5474, 10, context restored
-5484, 1, switch to user mode
-5485, 76, CPU execution
-5561, 1, switch to kernel mode
-5562, 10, context saved
-5572, 1, find vector 12 in memory position 0x0018
-5573, 1, load address 0X03B9 into the PC
-5574, 145, END_IO: run the ISR
-5719, 1, IRET
-5720, 10, context restored
-5730, 1, switch to user mode
-5731, 12, CPU execution
-5743, 1, switch to kernel mode
-5744, 10, context saved
-5754, 1, find vector 15 in memory position 0x001E
-5755, 1, load address 0X0584 into the PC
-5756, 68, SYSCALL: run the ISR
-5824, 1, IRET
-5825, 10, context restored
-5835, 1, switch to user mode
-5836, 57, CPU execution
-5893, 1, switch to kernel mode
-5894, 10, context saved
-5904, 1, find vector 15 in memory position 0x001E
-5905, 1, load address 0X0584 into the PC
-5906, 68, END_IO: run the ISR
-5974, 1, IRET
-5975, 10, context restored
-5985, 1, switch to user mode
-5986, 93, CPU execution
-6079, 1, switch to kernel mode
-6080, 10, context saved
-6090, 1, find vector 11 in memory position 0x0016
-6091, 1, load address 0X01F8 into the PC
-6092, 523, SYSCALL: run the ISR
-6615, 1, IRET
-6616, 10, context restored
-6626, 1, switch to user mode
-6627, 56, CPU execution
-6683, 1, switch to kernel mode
-6684, 10, context saved
-6694, 1, find vector 11 in memory position 0x0016
-6695, 1, load address 0X01F8 into the PC
-6696, 523, END_IO: run the ISR
-7219, 1, IRET
-7220, 10, context restored
-7230, 1, switch to user mode
-7231, 38, CPU execution
-7269, 1, switch to kernel mode
-7270, 10, context saved
-7280, 1, find vector 8 in memory position 0x0010
-7281, 1, load address 0X06EF into the PC
-7282, 1000, SYSCALL: run the ISR
-8282, 1, IRET
-8283, 10, context restored
-8293, 1, switch to user mode
-8294, 12, CPU execution
-8306, 1, switch to kernel mode
-8307, 10, context saved
-8317, 1, find vector 8 in memory position 0x0010
-8318, 1, load address 0X06EF into the PC
-8319, 1000, END_IO: run the ISR
-9319, 1, IRET
-9320, 10, context restored
-9330, 1, switch to user mode
-9331, 53, CPU execution
-9384, 1, switch to kernel mode
-9385, 10, context saved
-9395, 1, find vector 13 in memory position 0x001A
-9396, 1, load address 0X06C7 into the PC
-9397, 636, SYSCALL: run the ISR
-10033, 1, IRET
-10034, 10, context restored
-10044, 1, switch to user mode
-10045, 10, CPU execution
-10055, 1, switch to kernel mode
-10056, 10, context saved
-10066, 1, find vector 13 in memory position 0x001A
-10067, 1, load address 0X06C7 into the PC
-10068, 636, END_IO: run the ISR
-10704, 1, IRET
-10705, 10, context restored
-10715, 1, switch to user mode
-10716, 85, CPU execution
-10801, 1, switch to kernel mode
-10802, 10, context saved
-10812, 1, find vector 19 in memory position 0x0026
-10813, 1, load address 0X0765 into the PC
-10814, 652, SYSCALL: run the ISR
-11466, 1, IRET
-11467, 10, context restored
-11477, 1, switch to user mode
-11478, 81, CPU execution
-11559, 1, switch to kernel mode
-11560, 10, context saved
-11570, 1, find vector 19 in memory position 0x0026
-11571, 1, load address 0X0765 into the PC
-11572, 652, END_IO: run the ISR
-12224, 1, IRET
-12225, 10, context restored
-12235, 1, switch to user mode
-12236, 19, CPU execution
-12255, 1, switch to kernel mode
-12256, 10, context saved
-12266, 1, find vector 9 in memory position 0x0012
-12267, 1, load address 0X036C into the PC
-12268, 156, SYSCALL: run the ISR
-12424, 1, IRET
-12425, 10, context restored
-12435, 1, switch to user mode
-12436, 30, CPU execution
-12466, 1, switch to kernel mode
-12467, 10, context saved
-12477, 1, find vector 9 in memory position 0x0012
-12478, 1, load address 0X036C into the PC
-12479, 156, END_IO: run the ISR
-12635, 1, IRET
-12636, 10, context restored
-12646, 1, switch to user mode
-12647, 48, CPU execution
-12695, 1, switch to kernel mode
-12696, 10, context saved
-12706, 1, find vector 3 in memory position 0x0006
-12707, 1, load address 0X042B into the PC
-12708, 300, SYSCALL: run the ISR
-13008, 1, IRET
-13009, 10, context restored
-13019, 1, switch to user mode
-13020, 35, CPU execution
-13055, 1, switch to kernel mode
-13056, 10, context saved
-13066, 1, find vector 3 in memory position 0x0006
-13067, 1, load address 0X042B into the PC
-13068, 300, END_IO: run the ISR
-13368, 1, IRET
-13369, 10, context restored
-13379, 1, switch to user mode
-13380, 88, CPU execution
-13468, 1, switch to kernel mode
-13469, 10, context saved
-13479, 1, find vector 11 in memory position 0x0016
-13480, 1, load address 0X01F8 into the PC
-13481, 523, SYSCALL: run the ISR
-14004, 1, IRET
-14005, 10, context restored
-14015, 1, switch to user mode
-14016, 20, CPU execution
-14036, 1, switch to kernel mode
-14037, 10, context saved
-14047, 1, find vector 11 in memory position 0x0016
-14048, 1, load address 0X01F8 into the PC
-14049, 523, END_IO: run the ISR
-14572, 1, IRET
-14573, 10, context restored
-14583, 1, switch to user mode
-14584, 61, CPU execution
-14645, 1, switch to kernel mode
-14646, 10, context saved
-14656, 1, find vector 1 in memory position 0x0002
-14657, 1, load address 0X029C into the PC
-14658, 100, SYSCALL: run the ISR
-14758, 1, IRET
-14759, 10, context restored
-14769, 1, switch to user mode
-14770, 20, CPU execution
-14790, 1, switch to kernel mode
-14791, 10, context saved
-14801, 1, find vector 1 in memory position 0x0002
-14802, 1, load address 0X029C into the PC
-14803, 100, END_IO: run the ISR
-14903, 1, IRET
-14904, 10, context restored
-14914, 1, switch to user mode
-14915, 48, CPU execution
-14963, 1, switch to kernel mode
-14964, 10, context saved
-14974, 1, find vector 1 in memory position 0x0002
-14975, 1, load address 0X029C into the PC
-14976, 100, SYSCALL: run the ISR
-15076, 1, IRET
-15077, 10, context restored
-15087, 1, switch to user mode
-15088, 33, CPU execution
-15121, 1, switch to kernel mode
-15122, 10, context saved
-15132, 1, find vector 1 in memory position 0x0002
-15133, 1, load address 0X029C into the PC
-15134, 100, END_IO: run the ISR
-15234, 1, IRET
-15235, 10, context restored
-15245, 1, switch to user mode
-15246, 91, CPU execution
-15337, 1, switch to kernel mode
-15338, 10, context saved
-15348, 1, find vector 14 in memory position 0x001C
-15349, 1, load address 0X0165 into the PC
-15350, 456, SYSCALL: run the ISR
-15806, 1, IRET
-15807, 10, context restored
-15817, 1, switch to user mode
-15818, 41, CPU execution
-15859, 1, switch to kernel mode
-15860, 10, context saved
-15870, 1, find vector 14 in memory position 0x001C
-15871, 1, load address 0X0165 into the PC
-15872, 456, END_IO: run the ISR
-16328, 1, IRET
-16329, 10, context restored
-16339, 1, switch to user mode
-16340, 99, CPU execution
-16439, 1, switch to kernel mode
-16440, 10, context saved
-16450, 1, find vector 3 in memory position 0x0006
-16451, 1, load address 0X042B into the PC
-16452, 300, SYSCALL: run the ISR
-16752, 1, IRET
-16753, 10, context restored
-16763, 1, switch to user mode
-16764, 50, CPU execution
-16814, 1, switch to kernel mode
-16815, 10, context saved
-16825, 1, find vector 3 in memory position 0x0006
-16826, 1, load address 0X042B into the PC
-16827, 300, END_IO: run the ISR
-17127, 1, IRET
-17128, 10, context restored
-17138, 1, switch to user mode
-17139, 22, CPU execution
-17161, 1, switch to kernel mode
-17162, 10, context saved
-17172, 1, find vector 17 in memory position 0x0022
-17173, 1, load address 0X05B3 into the PC
-17174, 235, SYSCALL: run the ISR
-17409, 1, IRET
-17410, 10, context restored
-17420, 1, switch to user mode
-17421, 66, CPU execution
-17487, 1, switch to kernel mode
-17488, 10, context saved
-17498, 1, find vector 17 in memory position 0x0022
-17499, 1, load address 0X05B3 into the PC
-17500, 235, END_IO: run the ISR
-17735, 1, IRET
-17736, 10, context restored
-17746, 1, switch to user mode
-17747, 55, CPU execution
-17802, 1, switch to kernel mode
-17803, 10, context saved
-17813, 1, find vector 14 in memory position 0x001C
-17814, 1, load address 0X0165 into the PC
-17815, 456, SYSCALL: run the ISR
-18271, 1, IRET
-18272, 10, context restored
-18282, 1, switch to user mode
-18283, 80, CPU execution
-18363, 1, switch to kernel mode
-18364, 10, context saved
-18374, 1, find vector 14 in memory position 0x001C
-18375, 1, load address 0X0165 into the PC
-18376, 456, END_IO: run the ISR
-18832, 1, IRET
-18833, 10, context restored
-18843, 1, switch to user mode
-18844, 51, CPU execution
-18895, 1, switch to kernel mode
-18896, 10, context saved
-18906, 1, find vector 15 in memory position 0x001E
-18907, 1, load address 0X0584 into the PC
-18908, 68, SYSCALL: run the ISR
-18976, 1, IRET
-18977, 10, context restored
-18987, 1, switch to user mode
-18988, 61, CPU execution
-19049, 1, switch to kernel mode
-19050, 10, context saved
-19060, 1, find vector 15 in memory position 0x001E
-19061, 1, load address 0X0584 into the PC
-19062, 68, END_IO: run the ISR
-19130, 1, IRET
-19131, 10, context restored
-19141, 1, switch to user mode
-19142, 39, CPU execution
-19181, 1, switch to kernel mode
-19182, 10, context saved
-19192, 1, find vector 17 in memory position 0x0022
-19193, 1, load address 0X05B3 into the PC
-19194, 235, SYSCALL: run the ISR
-19429, 1, IRET
-19430, 10, context restored
-19440, 1, switch to user mode
-19441, 80, CPU execution
-19521, 1, switch to kernel mode
-19522, 10, context saved
-19532, 1, find vector 17 in memory position 0x0022
-19533, 1, load address 0X05B3 into the PC
-19534, 235, END_IO: run the ISR
-19769, 1, IRET
-19770, 10, context restored
-19780, 1, switch to user mode
-19781, 96, CPU execution
-19877, 1, switch to kernel mode
-19878, 10, context saved
-19888, 1, find vector 19 in memory position 0x0026
-19889, 1, load address 0X0765 into the PC
-19890, 652, SYSCALL: run the ISR
-20542, 1, IRET
-20543, 10, context restored
-20553, 1, switch to user mode
-20554, 88, CPU execution
-20642, 1, switch to kernel mode
-20643, 10, context saved
-20653, 1, find vector 19 in memory position 0x0026
-20654, 1, load address 0X0765 into the PC
-20655, 652, END_IO: run the ISR
-21307, 1, IRET
-21308, 10, context restored
-21318, 1, switch to user mode
-21319, 97, CPU execution
-21416, 1, switch to kernel mode
-21417, 10, context saved
-21427, 1, find vector 8 in memory position 0x0010
-21428, 1, load address 0X06EF into the PC
-21429, 1000, SYSCALL: run the ISR
-22429, 1, IRET
-22430, 10, context restored
-22440, 1, switch to user mode
-22441, 39, CPU execution
-22480, 1, switch to kernel mode
-22481, 10, context saved
-22491, 1, find vector 8 in memory position 0x0010
-22492, 1, load address 0X06EF into the PC
-22493, 1000, END_IO: run the ISR
-23493, 1, IRET
-23494, 10, context restored
-23504, 1, switch to user mode
-23505, 30, CPU execution
-23535, 1, switch to kernel mode
-23536, 10, context saved
-23546, 1, find vector 4 in memory position 0x0008
-23547, 1, load address 0X0292 into the PC
-23548, 250, SYSCALL: run the ISR
-23798, 1, IRET
-23799, 10, context restored
-23809, 1, switch to user mode
-23810, 77, CPU execution
-23887, 1, switch to kernel mode
-23888, 10, context saved
-23898, 1, find vector 4 in memory position 0x0008
-23899, 1, load address 0X0292 into the PC
-23900, 250, END_IO: run the ISR
-24150, 1, IRET
-24151, 10, context restored
-24161, 1, switch to user mode
-24162, 85, CPU execution
-24247, 1, switch to kernel mode
-24248, 10, context saved
-24258, 1, find vector 13 in memory position 0x001A
-24259, 1, load address 0X06C7 into the PC
-24260, 636, SYSCALL: run the ISR
-24896, 1, IRET
-24897, 10, context restored
-24907, 1, switch to user mode
-24908, 47, CPU execution
-24955, 1, switch to kernel mode
-24956, 10, context saved
-24966, 1, find vector 13 in memory position 0x001A
-24967, 1, load address 0X06C7 into the PC
-24968, 636, END_IO: run the ISR
-25604, 1, IRET
-25605, 10, context restored
-25615, 1, switch to user mode
-25616, 18, CPU execution
-25634, 1, switch to kernel mode
-25635, 10, context saved
-25645, 1, find vector 20 in memory position 0x0028
-25646, 1, load address 0X07B7 into the PC
-25647, 0, SYSCALL: run the ISR
-25647, 1, IRET
-25648, 10, context restored
-25658, 1, switch to user mode
-25659, 44, CPU execution
-25703, 1, switch to kernel mode
-25704, 10, context saved
-25714, 1, find vector 20 in memory position 0x0028
-25715, 1, load address 0X07B7 into the PC
-25716, 0, END_IO: run the ISR
-25716, 1, IRET
-25717, 10, context restored
-25727, 1, switch to user mode
-25728, 53, CPU execution
-25781, 1, switch to kernel mode
-25782, 10, context saved
-25792, 1, find vector 6 in memory position 0x000C
-25793, 1, load address 0X0639 into the PC
-25794, 265, SYSCALL: run the ISR
-26059, 1, IRET
-26060, 10, context restored
-26070, 1, switch to user mode
-26071, 69, CPU execution
-26140, 1, switch to kernel mode
-26141, 10, context saved
-26151, 1, find vector 6 in memory position 0x000C
-26152, 1, load address 0X0639 into the PC
-26153, 265, END_IO: run the ISR
-26418, 1, IRET
-26419, 10, context restored
-26429, 1, switch to user mode
-26430, 72, CPU execution
-26502, 1, switch to kernel mode
-26503, 10, context saved
-26513, 1, find vector 4 in memory position 0x0008
-26514, 1, load address 0X0292 into the PC
-26515, 250, SYSCALL: run the ISR
-26765, 1, IRET
-26766, 10, context restored
-26776, 1, switch to user mode
-26777, 25, CPU execution
-26802, 1, switch to kernel mode
-26803, 10, context saved
-26813, 1, find vector 4 in memory position 0x0008
-26814, 1, load address 0X0292 into the PC
-26815, 250, END_IO: run the ISR
-27065, 1, IRET
-27066, 10, context restored
-27076, 1, switch to user mode
-27077, 87, CPU execution
-27164, 1, switch to kernel mode
-27165, 10, context saved
-27175, 1, find vector 5 in memory position 0x000A
-27176, 1, load address 0X048B into the PC
-27177, 211, SYSCALL: run the ISR
-27388, 1, IRET
-27389, 10, context restored
-27399, 1, switch to user mode
-27400, 63, CPU execution
-27463, 1, switch to kernel mode
-27464, 10, context saved
-27474, 1, find vector 5 in memory position 0x000A
-27475, 1, load address 0X048B into the PC
-27476, 211, END_IO: run the ISR
-27687, 1, IRET
-27688, 10, context restored
-27698, 1, switch to user mode
-27699, 11, CPU execution
-27710, 1, switch to kernel mode
-27711, 10, context saved
-27721, 1, find vector 15 in memory position 0x001E
-27722, 1, load address 0X0584 into the PC
-27723, 68, SYSCALL: run the ISR
-27791, 1, IRET
-27792, 10, context restored
-27802, 1, switch to user mode
-27803, 74, CPU execution
-27877, 1, switch to kernel mode
-27878, 10, context saved
-27888, 1, find vector 15 in memory position 0x001E
-27889, 1, load address 0X0584 into the PC
-27890, 68, END_IO: run the ISR
-27958, 1, IRET
-27959, 10, context restored
-27969, 1, switch to user mode
-27970, 19, CPU execution
-27989, 1, switch to kernel mode
-27990, 10, context saved
-28000, 1, find vector 4 in memory position 0x0008
-28001, 1, load address 0X0292 into the PC
-28002, 250, SYSCALL: run the ISR
-28252, 1, IRET
-28253, 10, context restored
-28263, 1, switch to user mode
-28264, 69, CPU execution
-28333, 1, switch to kernel mode
-28334, 10, context saved
-28344, 1, find vector 4 in memory position 0x0008
-28345, 1, load address 0X0292 into the PC
-28346, 250, END_IO: run the ISR
-28596, 1, IRET
-28597, 10, context restored
-28607, 1, switch to user mode
-28608, 50, CPU execution
-28658, 1, switch to kernel mode
-28659, 10, context saved
-28669, 1, find vector 5 in memory position 0x000A
-28670, 1, load address 0X048B into the PC
-28671, 211, SYSCALL: run the ISR
-28882, 1, IRET
-28883, 10, context restored
-28893, 1, switch to user mode
-28894, 28, CPU execution
-28922, 1, switch to kernel mode
-28923, 10, context saved
-28933, 1, find vector 5 in memory position 0x000A
-28934, 1, load address 0X048B into the PC
-28935, 211, END_IO: run the ISR
-29146, 1, IRET
-29147, 10, context restored
-29157, 1, switch to user mode
-29158, 23, CPU execution

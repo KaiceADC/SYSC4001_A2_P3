@@ -4,7 +4,7 @@
  * Handles CPU execution, interrupts, process management, and system calls
  */
 
-#include "interrupts.hpp"
+#include "Interrupts_101166589_101257741.hpp"
 
 // Global state variables
 std::vector<Partition> partition_table;
@@ -447,32 +447,31 @@ std::tuple<std::vector<std::string>, std::vector<int>> parse_args(int argc, char
 
 // Write execution trace to output file
 void write_output(std::string execution) {
-    std::ofstream output_file("execution.txt");
+    std::ofstream output_file("output_files/execution.txt");  // ✅ FIXED
     if (output_file.is_open()) {
         output_file << execution;
         output_file.close();
         std::cout << "File content generated successfully." << std::endl;
     } else {
-        std::cerr << "Error opening file!" << std::endl;
+        std::cerr << "Error opening output_files/execution.txt!" << std::endl;
     }
 }
 
-// Write system status information
+
 void write_system_status_file(std::string status) {
-    std::ofstream status_file("system_status.txt");
+    std::ofstream status_file("output_files/system_status.txt");  // ✅ FIXED
     if (status_file.is_open()) {
         status_file << status;
         status_file.close();
     }
 }
 
-// Main simulation - read trace file and generate execution output
 int main(int argc, char** argv) {
     auto [vectors, delays] = parse_args(argc, argv);
     std::ifstream input_file(argv[1]);
     std::string trace;
     std::string execution;
-    std::string status;
+    std::string status;  // This will collect all status snapshots
     int current_time = 0;
     int current_pid = 0;
     bool in_child_block = false;
@@ -482,7 +481,7 @@ int main(int argc, char** argv) {
     initialize_system();
     external_files = load_external_files(argv[4]);
     
-    // Process each line from trace file
+    // Process each trace line
     while(std::getline(input_file, trace)) {
         auto [activity, value] = parse_trace(trace);
         
@@ -491,7 +490,30 @@ int main(int argc, char** argv) {
         }
         else if (activity == "FORK") {
             execution += handle_fork(current_time, vectors, current_pid);
+            
+            // After FORK, update states: parent waits, child runs
+            for (auto& pcb : pcb_table) {
+                if (pcb.pid == current_pid) {  // Parent
+                    pcb.state = "waiting";
+                }
+                if (pcb.pid == next_pid - 1) {  // Child (just created)
+                    pcb.state = "running";
+                }
+            }
+            
+            // ADD STATUS SNAPSHOT AFTER FORK
+            status += "\ntime: " + std::to_string(current_time) + "; current trace: FORK, " + std::to_string(value) + " //clones init, and runs the child\n";
+            status += "+---+---+---+---+\n";
+            status += "| PID | program name | partition number | size | state |\n";
+            status += "+---+---+---+---+\n";
+            for (const auto& pcb : pcb_table) {
+                status += "| " + std::to_string(pcb.pid) + " | " + pcb.program_name 
+                    + " | " + std::to_string(pcb.partition_number) + " | " 
+                    + std::to_string(pcb.size) + " | " + pcb.state + " |\n";
+            }
+            status += "+---+---+---+---+\n";
         }
+
         else if (activity == "IF_CHILD") {
             in_child_block = true;
             in_parent_block = false;
@@ -510,7 +532,24 @@ int main(int argc, char** argv) {
         else if (activity.substr(0, 4) == "EXEC") {
             std::string program_name = activity.substr(5);
             execution += handle_exec(program_name, current_time, vectors, external_files, current_pid);
+            
+            // ADD STATUS SNAPSHOT AFTER EXEC - only show affected process
+            status += "\ntime: " + std::to_string(current_time) + "; current trace: EXEC " + program_name + ", " + std::to_string(value) + "\n";
+            status += "+---+---+---+---+\n";
+            status += "| PID | program name | partition number | size | state |\n";
+            status += "+---+---+---+---+\n";
+            
+            // Show only processes that matter
+            for (const auto& pcb : pcb_table) {
+                if (pcb.pid == current_pid || pcb.pid == 0) {  // Show current and init
+                    status += "| " + std::to_string(pcb.pid) + " | " + pcb.program_name 
+                        + " | " + std::to_string(pcb.partition_number) + " | " 
+                        + std::to_string(pcb.size) + " | " + pcb.state + " |\n";
+                }
+            }
+            status += "+---+---+---+---+\n";
         }
+
         else if (activity == "SYSCALL" || activity == "END_IO"){
             execution += handle_interrupt(value, current_time, vectors, delays, activity);
         }
@@ -518,7 +557,7 @@ int main(int argc, char** argv) {
     
     input_file.close();
     
-    // Append final system state to output
+    // Append final system state
     execution += "\nFinal System State\n";
     execution += "Partition Table:\n";
     for (const auto& part : partition_table) {
@@ -537,7 +576,7 @@ int main(int argc, char** argv) {
     }
     
     write_output(execution);
-    write_system_status_file(status);
+    write_system_status_file(status);  // Now status has data!
     
     return 0;
 }
