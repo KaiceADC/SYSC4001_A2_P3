@@ -444,6 +444,12 @@ int main(int argc, char** argv) {
             }
             current_pid = 0;
             
+            for (auto& pcb : pcb_table) {
+                if (pcb.pid == 0) {
+                    pcb.state = "running";
+                }
+            }
+            
             continue;
         }
         if (activity == "ENDIF") {
@@ -514,6 +520,31 @@ int main(int argc, char** argv) {
                     + std::to_string(pcb.size) + " | " + pcb.state + " |\n";
             }
             status += "+-----+--------------+------------------+------+---------+\n";
+            
+            // === LOAD AND EXECUTE PROGRAM FILE (e.g., program2.txt, program1.txt) ===
+            std::string program_file = program_name + ".txt";
+            std::ifstream prog_file(program_file);
+            
+            if (prog_file.is_open()) {
+                std::string program_instruction;
+                while (std::getline(prog_file, program_instruction)) {
+                    // Trim the instruction
+                    program_instruction.erase(program_instruction.find_last_not_of(" \n\r\t") + 1);
+                    program_instruction = program_instruction.substr(program_instruction.find_first_not_of(" \n\r\t"));
+                    
+                    if (program_instruction.empty()) continue;
+                    
+                    auto [prog_activity, prog_value] = parse_trace(program_instruction);
+                    
+                    if (prog_activity == "CPU") {
+                        execution += simulate_cpu(prog_value, current_time);
+                    }
+                    else if (prog_activity == "SYSCALL" || prog_activity == "END_IO") {
+                        execution += handle_interrupt(prog_value, current_time, vectors, delays, prog_activity);
+                    }
+                }
+                prog_file.close();
+            }
         }
         // === SYSCALL / INTERRUPT ===
         else if (activity == "SYSCALL" || activity == "END_IO") {

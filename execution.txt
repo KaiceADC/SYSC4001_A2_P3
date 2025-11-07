@@ -15,7 +15,7 @@
 240, 6, updating PCB
 246, 0, scheduler called
 246, 1, IRET
-247, 100, CPU Burst  //executing the contents of program1, child done
+247, 100, CPU Burst
 347, 1, switch to kernel mode
 348, 10, context saved
 358, 1, find vector 3 in memory position 0x0006
@@ -26,6 +26,12 @@
 613, 6, updating PCB
 619, 0, scheduler called
 619, 1, IRET
+620, 1, switch to kernel mode
+621, 10, context saved
+631, 1, find vector 4 in memory position 0x0008
+632, 1, load address 0X0292 into the PC
+633, 250, SYSCALL: run the ISR
+883, 1, IRET
 
 Final System State
 Partition Table:
