@@ -9,6 +9,8 @@
 #include <cstdio>
 #include <queue>
 #include <map>
+#include <limits>
+
 
 // Simulator constants
 #define ADDR_BASE 0        // Base address for vector table

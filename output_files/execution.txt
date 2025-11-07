@@ -5,27 +5,37 @@
 13, 10, cloning the PCB
 23, 0, scheduler called
 23, 1, IRET
-24, 1, switch to user mode
-25, 1, switch to kernel mode
-26, 10, context saved
-36, 1, find vector 3 in memory position 0x0006
-37, 1, load address 0X042B into the PC
-38, 225, loading program2 from disk to partition 0
-263, 1, marking partition as occupied
-264, 3, updating PCB
-267, 0, scheduler called
-267, 1, IRET
-268, 1, switch to user mode
+24, 1, switch to kernel mode
+25, 10, context saved
+35, 1, find vector 3 in memory position 0x0006
+36, 1, load address 0X042B into the PC
+37, 50, Program is 10 MB large
+87, 150, loading program1 from disk to partition 0
+237, 3, marking partition as occupied
+240, 6, updating PCB
+246, 0, scheduler called
+246, 1, IRET
+247, 100, CPU Burst  //executing the contents of program1, child done
+347, 1, switch to kernel mode
+348, 10, context saved
+358, 1, find vector 3 in memory position 0x0006
+359, 1, load address 0X042B into the PC
+360, 25, Program is 15 MB large
+385, 225, loading program2 from disk to partition 1
+610, 3, marking partition as occupied
+613, 6, updating PCB
+619, 0, scheduler called
+619, 1, IRET
 
 Final System State
 Partition Table:
-Partition 0: 40 MB - Code: program2
-Partition 1: 25 MB - Code: free
+Partition 0: 40 MB - Code: program1
+Partition 1: 25 MB - Code: program2
 Partition 2: 15 MB - Code: free
 Partition 3: 10 MB - Code: free
 Partition 4: 8 MB - Code: free
-Partition 5: 2 MB - Code: init
+Partition 5: 2 MB - Code: free
 
 PCB Table:
-PID 0: program2 (Partition 0, 15 MB, State: running)
-PID 1 (Parent: 0): init (Partition 6, 1 MB, State: waiting)
+PID 0: program2 (Partition 1, 15 MB, State: running)
+PID 1 (Parent: 0): program1 (Partition 0, 10 MB, State: running)
