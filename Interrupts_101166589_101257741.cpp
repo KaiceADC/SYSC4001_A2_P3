@@ -320,8 +320,8 @@ int main(int argc, char** argv) {
 
     input_file.close();
 
-    write_output(execution, "output_files/execution.txt");
-    write_output(system_status, "output_files/system_status.txt");
+    write_output(execution, "output_files/execution_5.txt");
+    write_output(system_status, "output_files/system_status_5.txt");
 
     return 0;
 }

@@ -1,13 +1,9 @@
 FORK, 12
 IF_CHILD, 0
-EXEC, program7, 45
+EXEC program7, 45
 IF_PARENT, 0
-EXEC, program8, 30
+EXEC program8, 30
 ENDIF, 0
 CPU, 120
 FORK, 8
 IF_CHILD, 0
-EXEC, program1, 40
-IF_PARENT, 0
-CPU, 150
-ENDIF, 0
