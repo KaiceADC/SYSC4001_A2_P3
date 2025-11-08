@@ -1,1 +1,3 @@
-SYSCALL,4
+CPU, 70
+SYSCALL, 3
+

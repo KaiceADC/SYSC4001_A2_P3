@@ -1,1 +1,2 @@
-SYSCALL,4
+CPU, 80
+END_IO, 3
